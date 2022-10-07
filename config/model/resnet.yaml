@@ -1,0 +1,8 @@
+#@package _global_
+MODEL:
+  name: resnet
+  h_nodes: []
+  out_dim: 1
+  activation: 'relu' # or leakyRelU
+  use_bn: True
+  dropout: 0

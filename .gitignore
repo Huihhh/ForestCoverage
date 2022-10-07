@@ -1,0 +1,16 @@
+**.vscode/
+**.DS_Store
+**__pycache__/
+**.doc
+**.pdf
+outputs/
+results/
+
+.hydra/
+checkpoints/
+*.log
+*.png
+
+data/
+*.sh
+artifacts/

@@ -1,0 +1,55 @@
+#TODO: add available choices
+defaults:
+  - model: resnet
+  - _self_
+
+
+# wandb setting
+dryrun: False
+wandb_project: test
+run_name: test
+log_artifact_every: #int or list of int, if -1, log the last epoch
+log_weight_every: 
+
+seed: 0
+use_gpu: True
+debug: False # if debug, don't save checkpoints
+CUDA_VISIBLE_DEVICES: # for local test runs
+early_stop: False
+
+
+DATASET:
+    name: forest_coverage
+    data_dir: 'data/train'
+    shuffle: False
+    use_aug: False
+    flip_p: 0.2
+    aug_times: 1
+      # data loader
+    n_val: 0.1
+    n_test: 0.2
+    batch_size: 64
+    num_workers: 4
+
+TRAIN: 
+  n_epoch: 500 # 1024
+  
+  # optimizer
+  lr: 0.001
+  use_scheduler: True
+  warmup: 0
+  # regularization
+  wdecay: 0.002
+  loss_lambda: 1
+
+  # scheduler
+  scheduler: steplr
+  step_size: 30
+  steplr_gamma: 0.4
+
+  ema_used: False
+  ema_decay: 0.999
+
+hydra:
+  run:
+    dir: ./outputs/${run_name}_${DATASET.name}_${now:%Y-%m-%d_%H-%M-%S}
